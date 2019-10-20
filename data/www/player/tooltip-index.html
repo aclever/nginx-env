@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>[DEV] Tooltip Player</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!--- Tooltip player -->
+    <script type='text/javascript'>
+        window.TooltipUserData = {env: "tooltip-dev"};
+
+        window.Tooltip || function (t, e) {
+            var o = {
+                url: "http://localhost:9005/player.js",
+		key: "b429dfad-e1cb-412e-bbd8-bd680e96d10b",
+                async: true
+            };
+            window.Tooltip = {cs: [], _apiKey: o.key};
+            for (
+                var r = ["identify", "goal", "updateUserData", "start", "stop", "refresh", "show", "hide", "on"],
+                    i = {}, n = 0; n < r.length; n++) {
+                var a = r[n];
+                i[a] = function (t) {
+                    return function () {
+                        var e = Array.prototype.slice.call(arguments);
+                        window.Tooltip.cs.push({method: t, args: e})
+                    }
+                }(a)
+            }
+            window.Tooltip.API = i;
+            var n = t.createElement(e), s = t.getElementsByTagName(e)[0];
+            n.type = "text/javascript", n.async = o.async, s.parentNode.insertBefore(n, s), n.src = o.url
+        }(document, "script");
+    </script>
+    <!--- Tooltip player -->
+
+</head>
+<body>
+  <div>Player Tooltip Test site</p>
+</body>
+</html>

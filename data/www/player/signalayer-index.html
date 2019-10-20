@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>[DEV] Signalayer Player</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!--- Signalayer player -->
+    <script type='text/javascript'>
+        window.SignalayerUserData = {env: "signalayer-dev"};
+
+        window.Signalayer || function (t, e) {
+            var o = {
+                url: "http://localhost:9005/player.js",
+                key: "b429dfad-e1cb-412e-bbd8-bd680e96d10b",
+                async: true
+            };
+            window.Signalayer = {cs: [], _apiKey: o.key};
+            for (
+                var r = ["identify", "goal", "updateUserData", "start", "stop", "refresh", "show", "hide", "on"],
+                    i = {}, n = 0; n < r.length; n++) {
+                var a = r[n];
+                i[a] = function (t) {
+                    return function () {
+                        var e = Array.prototype.slice.call(arguments);
+                        window.Signalayer.cs.push({method: t, args: e})
+                    }
+                }(a)
+            }
+            window.Signalayer.API = i;
+            var n = t.createElement(e), s = t.getElementsByTagName(e)[0];
+            n.type = "text/javascript", n.async = o.async, s.parentNode.insertBefore(n, s), n.src = o.url
+        }(document, "script");
+    </script>
+    <!--- Signalayer player -->
+
+</head>
+<body>
+  <div>Player Signalayer Test site</p>
+</body>
+</html>
